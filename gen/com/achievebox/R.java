@@ -37,10 +37,10 @@ public final class R {
         public static final int splash_screen_wp=0x7f020006;
     }
     public static final class id {
+        public static final int AchievementAdd=0x7f0a0001;
         public static final int action_new=0x7f0a0009;
         public static final int action_search=0x7f0a0008;
         public static final int action_settings=0x7f0a000a;
-        public static final int button1=0x7f0a0001;
         public static final int cbBox=0x7f0a0003;
         public static final int editText1=0x7f0a0000;
         public static final int ivImage=0x7f0a0007;

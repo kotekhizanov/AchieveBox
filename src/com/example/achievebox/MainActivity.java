@@ -31,8 +31,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// настраиваем список
 		ListView lvMain = (ListView) findViewById(R.id.listViewBody);
 		lvMain.setAdapter(boxAdapter);
-		// listviewbody.setAdapter(sAdapter);
-
+		
 	}
 
 	@Override
@@ -47,13 +46,19 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		switch (item.getItemId()) {
 		case R.id.action_new:
+			
 			Intent i = new Intent(this, AchievementNew.class);
 			startActivity(i);
-
+			
+			//fillData();
+			//boxAdapter.notifyDataSetChanged();
+			
 			break;
 		default:
 			break;
 		}
+		
+		
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -71,10 +76,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	// генерируем данные для адаптера
 	void fillData() {
-		for (int i = 1; i <= 20; i++) {
-			products.add(new Product("Product " + i, i * 1000,
+		
+		for (int i = 1; i <= 1; i++) {
+			products.add(new Product("Product " + Integer.toString(products.size() + 1), i * 1000,
 					R.drawable.ic_launcher, false));
 		}
+		
+		
 	}
 
 	// выводим информацию о корзине
