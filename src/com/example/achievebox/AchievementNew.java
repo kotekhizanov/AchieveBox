@@ -9,16 +9,18 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.achievebox.R;
 
@@ -26,12 +28,16 @@ public class AchievementNew extends Activity implements OnClickListener {
 	
 	private ProgressDialog dialog;
 	
-	private Button AchievementAdd;
+	private Button AchievementAdd;	
+	private TextView achievement_new_name;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.achievement_new);
+		
+		achievement_new_name = (TextView) findViewById(R.id.achievement_new_name);
 
 		AchievementAdd = (Button) findViewById(R.id.AchievementAdd);
         // When we creating a button and if we expect that to use for event handling we have to set the listener
@@ -63,14 +69,13 @@ public class AchievementNew extends Activity implements OnClickListener {
                 //будем передавать два параметра
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 //передаем параметры из наших текстбоксов
-                //лоигн
-                //nameValuePairs.add(new BasicNameValuePair("login", login.getText().toString()));
-                //пароль
-                //nameValuePairs.add(new BasicNameValuePair("pass", pass.getText().toString()));
+                nameValuePairs.add(new BasicNameValuePair("user_id", "1"));
+                nameValuePairs.add(new BasicNameValuePair("name", achievement_new_name.getText().toString()));
                 //собераем их вместе и посылаем на сервер
                 postMethod.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 //получаем ответ от сервера
                 String response = hc.execute(postMethod, res);
+                
                 //посылаем на вторую активность полученные параметры
                 //Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 //то что куда мы будем передавать и что, putExtra(куда, что);
